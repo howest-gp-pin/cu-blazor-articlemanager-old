@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
-using ArticleManager.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-namespace article_manager_wasm
+namespace ArticleManager.Web
 {
     public class Program
     {
