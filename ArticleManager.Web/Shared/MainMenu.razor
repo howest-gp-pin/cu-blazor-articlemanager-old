@@ -6,7 +6,7 @@
         @foreach (var item in MenuItems)
         {
             <li class="nav-item @(item.Active ? "active" : null)">
-                <a class="nav-link" href="#" @onclick="e => OnMenuItemClick.InvokeAsync(item)">@item.Caption</a>
+                <a class="nav-link" href="#" @onclick="e => { OnMenuItemClick.InvokeAsync(item); SetMenuClasses(item); }">@item.Caption</a>
             </li>
         }
     </ul>
@@ -17,4 +17,13 @@
     public EventCallback<MenuItem> OnMenuItemClick { get; set; }
     [Parameter]
     public MenuItem[] MenuItems { get; set; }
+
+    private void SetMenuClasses(MenuItem item)
+    {
+        foreach (var menuItem in MenuItems)
+        {
+            menuItem.Active = false;
+        }
+        item.Active = true;
+    }
 }

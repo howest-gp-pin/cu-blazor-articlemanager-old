@@ -2,22 +2,23 @@
 <div class="container mt-3">
     <h2>Article Manager</h2>
     <p>Welcome to the article manager app.</p>
+    <p>@pageBody</p>
 </div>
 
 @code {
     public MenuItem[] MenuItems { get; set; }
+    private string pageBody;
+
     protected override void OnInitialized()
     {
         this.loadMenuItems();
     }
+
     public void MenuItemClick(MenuItem item)
     {
-        foreach (var menuItem in MenuItems)
-        {
-            menuItem.Active = false;
-        }
-        item.Active = true;
+        pageBody = $"Selected {item.Caption}";
     }
+
     private void loadMenuItems()
     {
         this.MenuItems = new MenuItem[] {
