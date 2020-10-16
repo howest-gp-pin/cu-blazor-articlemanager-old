@@ -21,6 +21,7 @@ namespace ArticleManager.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddTransient<ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>, ArticleCategoriesService>();
+            services.AddTransient<ICRUDService<ArticleListItem, ArticleItem>, ArticlesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
