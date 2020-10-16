@@ -13,6 +13,7 @@ namespace ArticleManager.Web
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
             builder.Services.AddTransient<ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>, ArticleCategoriesService>();
+            builder.Services.AddTransient<ICRUDService<ArticleListItem, ArticleItem>, ArticlesService>();
             await builder.Build().RunAsync();
         }
 
