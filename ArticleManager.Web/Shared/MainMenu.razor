@@ -5,16 +5,16 @@
     <ul class="navbar-nav">
         @foreach (var item in MenuItems)
         {
-            <li class="nav-item @(item.Active ? "active" : null)">
-                <a class="nav-link" href="#" @onclick="e => OnMenuItemClick.InvokeAsync(item)">@item.Caption</a>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="@item.Href" Match="NavLinkMatch.All">
+                    @item.Caption
+                </NavLink>
             </li>
         }
     </ul>
 </nav>
 
 @code {
-    [Parameter]
-    public EventCallback<MenuItem> OnMenuItemClick { get; set; }
     [Parameter]
     public MenuItem[] MenuItems { get; set; }
 }
