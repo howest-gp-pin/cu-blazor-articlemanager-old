@@ -1,5 +1,8 @@
 using System.Threading.Tasks;
+using ArticleManager.Web.Models;
+using ArticleManager.Web.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ArticleManager.Web
 {
@@ -9,6 +12,7 @@ namespace ArticleManager.Web
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
+            builder.Services.AddTransient<ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>, ArticleCategoriesService>();
             await builder.Build().RunAsync();
         }
 
