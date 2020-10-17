@@ -1,5 +1,5 @@
 ﻿using ArticleManager.Core.Entities.Base;
-using ArticleManager.Core.Interfaces;
+using ArticleManager.Core.Interfaces.Repositories.Base;
 using ArticleManager.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,7 +36,7 @@ namespace ArticleManager.Infrastructure.Repositories
             return await query.SingleOrDefaultAsync(t => t.Id.Equals(id));
         }
 
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             return  _dbContext.Set<T>().AsNoTracking();
         }

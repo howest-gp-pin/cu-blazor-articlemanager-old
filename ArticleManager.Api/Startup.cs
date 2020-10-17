@@ -7,8 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ArticleManager.Infrastructure.Data;
 using ArticleManager.Core.Entities;
-using ArticleManager.Core.Interfaces;
 using ArticleManager.Infrastructure.Repositories;
+using ArticleManager.Core.Interfaces.Repositories.Base;
+using ArticleManager.Core.Interfaces.Repositories;
+using ArticleManager.Core.Services;
+using ArticleManager.Core.Interfaces.Services;
 
 namespace ArticleManager.Api
 {
@@ -31,7 +34,9 @@ namespace ArticleManager.Api
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddTransient<IRepository<Category, int>, EfRepository<Category, int>>(); 
-            services.AddTransient<ArticlesRepository, ArticlesRepository>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
+
+            services.AddScoped<IArticleService, ArticleService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

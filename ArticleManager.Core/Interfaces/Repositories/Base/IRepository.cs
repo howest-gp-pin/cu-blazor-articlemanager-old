@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace ArticleManager.Core.Interfaces
+namespace ArticleManager.Core.Interfaces.Repositories.Base
 {
     public interface IRepository<T, TKey> where T : EntityBase<TKey>
     {

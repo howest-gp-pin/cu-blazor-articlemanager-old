@@ -1,6 +1,6 @@
 ﻿using ArticleManager.Api.Controllers.Base;
 using ArticleManager.Core.Entities;
-using ArticleManager.Core.Interfaces;
+using ArticleManager.Core.Interfaces.Repositories.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArticleManager.Api.Controllers

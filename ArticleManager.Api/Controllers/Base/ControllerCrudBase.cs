@@ -1,5 +1,5 @@
 ﻿using ArticleManager.Core.Entities.Base;
-using ArticleManager.Core.Interfaces;
+using ArticleManager.Core.Interfaces.Repositories.Base;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

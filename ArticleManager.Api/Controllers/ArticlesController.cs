@@ -8,10 +8,10 @@ namespace ArticleManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArticlesController : ControllerCrudBase<Article, int, ArticlesRepository>
+    public class ArticlesController : ControllerCrudBase<Article, int, ArticleRepository>
     {
 
-        public ArticlesController(ArticlesRepository repository): base(repository)
+        public ArticlesController(ArticleRepository repository): base(repository)
         {
         }
 
