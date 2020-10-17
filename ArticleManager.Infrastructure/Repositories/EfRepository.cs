@@ -82,7 +82,7 @@ namespace ArticleManager.Infrastructure.Repositories
         public async Task<T> DeleteAsync(TKey id)
         {
             var entity = await GetByIdAsync(id);
-            await DeleteAsync(entity);
+            if(entity != null) { await DeleteAsync(entity); }
             return entity;
         }
 

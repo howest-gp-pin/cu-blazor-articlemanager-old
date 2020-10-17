@@ -1,19 +1,25 @@
 ﻿using ArticleManager.Api.Controllers.Base;
 using ArticleManager.Core.Entities;
 using ArticleManager.Core.Interfaces;
+using ArticleManager.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ArticleManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArticlesController : ControllerCrudBase<Article, int, IRepository<Article, int>>
+    public class ArticlesController : ControllerCrudBase<Article, int, ArticlesRepository>
     {
-        private readonly IRepository<Article, int> _repository;
 
-        public ArticlesController(IRepository<Article, int> repository): base(repository)
+        public ArticlesController(ArticlesRepository repository): base(repository)
         {
-            _repository = repository;
+        }
+
+        // GET: api/Articles/Last
+        [HttpGet("Last")]
+        public virtual IActionResult GetLastArticle()
+        {
+            return Ok(repository.GetLastArticle());
         }
     }
 }

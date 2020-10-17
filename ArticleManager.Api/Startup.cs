@@ -31,7 +31,7 @@ namespace ArticleManager.Api
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddTransient<IRepository<Category, int>, EfRepository<Category, int>>(); 
-            services.AddTransient<IRepository<Article, int>, EfRepository<Article, int>>();
+            services.AddTransient<ArticlesRepository, ArticlesRepository>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

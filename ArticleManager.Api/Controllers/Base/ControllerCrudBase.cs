@@ -58,6 +58,7 @@ namespace ArticleManager.Api.Controllers.Base
         public async Task<IActionResult> Delete([FromRoute] TKey id)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (id == null) return NotFound();            
             var deleted = await repository.DeleteAsync(id);
             if (deleted == null) return NotFound();
             return Ok(deleted);

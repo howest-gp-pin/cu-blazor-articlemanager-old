@@ -9,11 +9,9 @@ namespace ArticleManager.Api.Controllers
     [ApiController]
     public class CategoriesController: ControllerCrudBase<Category, int, IRepository<Category, int>>
     {
-        private readonly IRepository<Category, int> _repository;
-
         public CategoriesController(IRepository<Category, int> repository) : base(repository)
         {
-            _repository = repository;
+
         }
     }
 }
