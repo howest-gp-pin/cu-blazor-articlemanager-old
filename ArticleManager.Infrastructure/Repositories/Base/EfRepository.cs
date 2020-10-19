@@ -8,13 +8,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace ArticleManager.Infrastructure.Repositories
+namespace ArticleManager.Infrastructure.Repositories.Base
 {
-    public class EfRepository<T, TKey> : IRepository<T, TKey> where T : EntityBase<TKey>
+    public class EfRepositoryBase<T, TKey> : IRepository<T, TKey> where T : EntityBase<TKey>
     {
         protected readonly ApplicationDbContext _dbContext;
 
-        public EfRepository(ApplicationDbContext dbContext)
+        public EfRepositoryBase(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -33,10 +33,12 @@ namespace ArticleManager.Api
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddTransient<IRepository<Category, int>, EfRepository<Category, int>>(); 
+            
             services.AddScoped<IArticleRepository, ArticleRepository>();
-
             services.AddScoped<IArticleService, ArticleService>();
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

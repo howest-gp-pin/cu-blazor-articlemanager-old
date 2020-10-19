@@ -1,25 +1,25 @@
 ﻿using ArticleManager.Core.Entities.Base;
-using ArticleManager.Core.Interfaces.Repositories.Base;
+using ArticleManager.Core.Interfaces.Services.Base;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace ArticleManager.Api.Controllers.Base
 {
-    public class ControllerCrudBase<T, TKey, R> : ControllerBase
+    public class ControllerCrudBase<T, TKey, S> : ControllerBase
         where T : EntityBase<TKey>
-        where R : IRepository<T, TKey>
+        where S : IRepositoryService<T, TKey>
     {
-        protected R repository;
-        public ControllerCrudBase(R r)
+        protected S service;
+        public ControllerCrudBase(S s)
         {
-            repository = r;
+            service = s;
         }
 
         // GET: api/T
         [HttpGet]
         public virtual async Task<IActionResult> Get()
         {
-            return Ok(repository.GetAll());
+            return Ok(service.Repository.GetAll());
         }
 
 
@@ -27,7 +27,7 @@ namespace ArticleManager.Api.Controllers.Base
         [HttpGet("{id}")]
         public virtual async Task<IActionResult> Get(TKey id)
         {
-            return Ok(await repository.GetByIdAsync(id));
+            return Ok(await service.Repository.GetByIdAsync(id));
         }
 
         // PUT: api/T/5
@@ -38,7 +38,7 @@ namespace ArticleManager.Api.Controllers.Base
             if (!ModelState.IsValid) return BadRequest(ModelState);
             if (!id.Equals(entity.Id)) return BadRequest();
 
-            T updated = await repository.UpdateAsync(entity);
+            T updated = await service.Repository.UpdateAsync(entity);
 
             if (updated == null) return NotFound();
             return Ok(updated);
@@ -49,7 +49,7 @@ namespace ArticleManager.Api.Controllers.Base
         public virtual async Task<IActionResult> Post([FromBody] T entity)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            await repository.AddAsync(entity);
+            await service.Repository.AddAsync(entity);
             return CreatedAtAction("Get", new { id = entity.Id }, entity);
         }
 
@@ -59,7 +59,7 @@ namespace ArticleManager.Api.Controllers.Base
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             if (id == null) return NotFound();            
-            var deleted = await repository.DeleteAsync(id);
+            var deleted = await service.Repository.DeleteAsync(id);
             if (deleted == null) return NotFound();
             return Ok(deleted);
         }

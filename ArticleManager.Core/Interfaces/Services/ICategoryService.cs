@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace ArticleManager.Core.Interfaces.Services
 {
-    public interface IArticleService: IRepositoryService<Article, int>
+    public interface ICategoryService : IRepositoryService<Category, int>
     {
-        public Task<Article> GetLastArticle();
+
     }
 }

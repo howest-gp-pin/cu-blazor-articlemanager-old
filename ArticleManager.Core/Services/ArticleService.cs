@@ -1,23 +1,24 @@
 ﻿using ArticleManager.Core.Entities;
-using ArticleManager.Core.Interfaces;
 using ArticleManager.Core.Interfaces.Repositories;
 using ArticleManager.Core.Interfaces.Services;
-using System.Linq;
+using ArticleManager.Core.Services.Base;
 using System.Threading.Tasks;
 
 namespace ArticleManager.Core.Services
 {
-    public class ArticleService: IArticleService
+    public class ArticleService: RepositoryServiceBase<Article, int>, IArticleService
     {
-        private IArticleRepository _articleRepository;
-        public ArticleService(IArticleRepository articleRepository)
+        private IArticleRepository _repository;
+
+        public ArticleService(IArticleRepository repository): base(repository)
         {
-            _articleRepository = articleRepository;
+            _repository = repository;
         }
 
+       
         public async Task<Article> GetLastArticle()
         {
-            return await _articleRepository.GetLastArticle();
+            return await _repository.GetLastArticle();
         }
 
     }

@@ -2,9 +2,6 @@
 using ArticleManager.Infrastructure.Data.Seeding;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ArticleManager.Infrastructure.Data
 {
@@ -25,8 +22,5 @@ namespace ArticleManager.Infrastructure.Data
             CategorySeeder.Seed(modelBuilder);
             ArticleSeeder.Seed(modelBuilder);
         }
-
-
-
     }
 }
