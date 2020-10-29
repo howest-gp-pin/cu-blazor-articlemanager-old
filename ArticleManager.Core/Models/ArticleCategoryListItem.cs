@@ -1,4 +1,4 @@
-﻿namespace ArticleManager.Web.Models
+﻿namespace ArticleManager.Core.Models
 {
     public class ArticleCategoryListItem
     {

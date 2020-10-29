@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ArticleManager.Web.Models
+namespace ArticleManager.Core.Models
 {
     public class ArticleCategoryItem
     {
