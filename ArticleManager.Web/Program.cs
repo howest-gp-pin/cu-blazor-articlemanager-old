@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using ArticleManager.Web.Models;
+using ArticleManager.Core.Models;
 using ArticleManager.Web.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
