@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleManager.Web", "ArticleManager.Web\ArticleManager.Web.csproj", "{D5B74C06-C3AF-46AE-97F0-68C105B8EBE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleManager.Api", "ArticleManager.Api\ArticleManager.Api.csproj", "{C4E97B3B-40A2-42DF-A650-331889951521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D5B74C06-C3AF-46AE-97F0-68C105B8EBE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5B74C06-C3AF-46AE-97F0-68C105B8EBE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5B74C06-C3AF-46AE-97F0-68C105B8EBE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E97B3B-40A2-42DF-A650-331889951521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E97B3B-40A2-42DF-A650-331889951521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E97B3B-40A2-42DF-A650-331889951521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E97B3B-40A2-42DF-A650-331889951521}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
