@@ -43,6 +43,7 @@ namespace ArticleManager.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             }
             else
             {

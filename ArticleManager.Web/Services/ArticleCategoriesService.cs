@@ -1,7 +1,6 @@
 ﻿using ArticleManager.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace ArticleManager.Web.Services
@@ -9,21 +8,20 @@ namespace ArticleManager.Web.Services
     public class ArticleCategoriesService
         : ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>
     {
-        static List<ArticleCategoryItem> categories = new List<ArticleCategoryItem>{
-            new ArticleCategoryItem() { Id = 1, Name = "Category 1", Description = "Description 1" },
-            new ArticleCategoryItem() { Id = 2, Name = "Category 2", Description = "Description 2" },
-            new ArticleCategoryItem() { Id = 3, Name = "Category 3", Description = "Description 3" },
-        };
+        private string baseUrl = "https://localhost:5003/api/categories";
+        private readonly HttpClient _httpClient = null;
+
+        public ArticleCategoriesService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
 
         public Task<ArticleCategoryListItem[]> GetList()
         {
-            return Task.FromResult(
-                categories.Select(x => new ArticleCategoryListItem()
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                }).ToArray()
-            );
+            var result = _httpClient
+                .GetFromJsonAsync<ArticleCategoryListItem[]>
+                    ($"{baseUrl}");
+            return result;
         }
 
         public Task<ArticleCategoryItem> GetNew()
@@ -34,33 +32,29 @@ namespace ArticleManager.Web.Services
         }
         public Task<ArticleCategoryItem> Get(int id)
         {
-            return Task.FromResult(
-                categories.SingleOrDefault(x => x.Id == id)
-            );
+            return _httpClient
+                .GetFromJsonAsync<ArticleCategoryItem>
+                    ($"{baseUrl}/{id}");
         }
 
         public Task Create(ArticleCategoryItem item)
         {
-            item.Id = categories.Count() > 0 ? categories.Max(x => x.Id) + 1 : 1;
-            categories.Add(item);
-            return Task.CompletedTask;
+            return _httpClient
+                .PostAsJsonAsync<ArticleCategoryItem>
+                    ($"{baseUrl}", item);
         }
 
         public Task Update(ArticleCategoryItem item)
         {
-            var category = categories.SingleOrDefault(x => x.Id == item.Id);
-            if (category == null) throw new ArgumentException("Category not found!");
-            category.Name = item.Name;
-            category.Description = item.Description;
-            return Task.CompletedTask;
+            return _httpClient
+                .PutAsJsonAsync
+                    ($"{baseUrl}/{item.Id}", item);
         }
 
         public Task Delete(int id)
         {
-            var category = categories.SingleOrDefault(x => x.Id == id);
-            if (category == null) throw new ArgumentException("Category not found!");
-            categories.Remove(category);
-            return Task.CompletedTask;
+            return _httpClient
+                .DeleteAsync($"{baseUrl}/{id}");
         }
     }
 }
