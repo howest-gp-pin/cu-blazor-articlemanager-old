@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using ArticleManager.Core.Models;
-using ArticleManager.Web.Models;
 using ArticleManager.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -24,7 +18,7 @@ namespace ArticleManager.Web
             services.AddServerSideBlazor();
             services.AddTransient<ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>, ArticleCategoriesService>();
             services.AddTransient<ICRUDService<ArticleListItem, ArticleItem>, ArticlesService>();
-            services.AddTransient<HttpClient>()
+            services.AddTransient<HttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
