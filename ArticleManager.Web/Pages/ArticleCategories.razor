@@ -28,7 +28,7 @@
 </div>
 
 @code {
-    private ArticleCategoryListItem[] articleCategoryListItems;
+    private ArticleCategoryListItem[] articleCategoryListItems = new ArticleCategoryListItem[0];
     private ArticleCategoryItem currentCategory;
     private string error;
 
@@ -39,15 +39,7 @@
 
     public async Task ShowList()
     {
-        articleCategoryListItems = new ArticleCategoryListItem[] {
-            new ArticleCategoryListItem { Id= 1, Name="test" }
-        };
-
-
-        
         articleCategoryListItems = await service.GetList();
-
-
         this.currentCategory = null;
     }
 

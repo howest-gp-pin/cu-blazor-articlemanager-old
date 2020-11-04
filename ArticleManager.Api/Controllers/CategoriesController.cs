@@ -35,7 +35,7 @@ namespace ArticleManager.Api.Controllers
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var category = await _context.Categories
                 .Where(x => x.Id == id)
