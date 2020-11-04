@@ -22,15 +22,15 @@ namespace ArticleManager.Api.Controllers
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> Get()
+        public  IActionResult Get()
         {
-            return Ok( await _context.Categories
+            return Ok( _context.Categories
                 .Select(x => new ArticleCategoryListItem()
                 {
                     Id = x.Id,
                     Name = x.Name
                 })
-                .ToListAsync());
+                .ToList());
         }
 
         // GET: api/Categories/5

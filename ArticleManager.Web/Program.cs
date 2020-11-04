@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 using ArticleManager.Core.Models;
 using ArticleManager.Web.Services;
@@ -14,6 +15,7 @@ namespace ArticleManager.Web
             builder.RootComponents.Add<App>("app");
             builder.Services.AddTransient<ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>, ArticleCategoriesService>();
             builder.Services.AddTransient<ICRUDService<ArticleListItem, ArticleItem>, ArticlesService>();
+            builder.Services.AddTransient<HttpClient>();
             await builder.Build().RunAsync();
         }
 
