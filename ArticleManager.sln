@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleManager.Web", "ArticleManager.Web\ArticleManager.Web.csproj", "{D5B74C06-C3AF-46AE-97F0-68C105B8EBE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleManager.Api", "ArticleManager.Api\ArticleManager.Api.csproj", "{9A8D89A3-BE09-4BBC-943C-CCE8BD192FF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleManager.Api", "ArticleManager.Api\ArticleManager.Api.csproj", "{9A8D89A3-BE09-4BBC-943C-CCE8BD192FF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleManager.Core", "ArticleManager.Core\ArticleManager.Core.csproj", "{95F9C80F-79AE-411D-BF7D-3D7F9F43F722}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleManager.Core", "ArticleManager.Core\ArticleManager.Core.csproj", "{95F9C80F-79AE-411D-BF7D-3D7F9F43F722}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
