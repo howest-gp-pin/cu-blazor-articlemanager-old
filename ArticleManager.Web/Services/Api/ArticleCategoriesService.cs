@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace ArticleManager.Web.Services
+namespace ArticleManager.Web.Services.Api
 {
     public class ArticleCategoriesService
         : ICRUDService<ArticleCategoryListItem, ArticleCategoryItem>

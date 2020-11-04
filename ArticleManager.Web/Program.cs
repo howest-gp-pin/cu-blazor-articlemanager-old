@@ -2,6 +2,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using ArticleManager.Core.Models;
 using ArticleManager.Web.Services;
+using ArticleManager.Web.Services.Api;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 

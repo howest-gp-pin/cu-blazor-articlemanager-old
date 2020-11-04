@@ -1,12 +1,9 @@
 ﻿using ArticleManager.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace ArticleManager.Web.Services
+namespace ArticleManager.Web.Services.Api
 {
     public class ArticlesService
         : ICRUDService<ArticleListItem, ArticleItem>
