@@ -37,11 +37,8 @@ namespace ArticleManager.Api
             services.AddRazorPages();
 
             services.AddSwaggerGen(c =>
-
             {
-
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ArticleManager API", Version = "v1" });
-
             });
         }
 
@@ -52,7 +49,6 @@ namespace ArticleManager.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             }
             else
             {
@@ -60,6 +56,8 @@ namespace ArticleManager.Api
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             // Enable middleware to serve generated Swagger as a JSON endpoint. 
             app.UseSwagger();
