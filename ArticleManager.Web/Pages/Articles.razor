@@ -11,11 +11,11 @@
 
     @if (currentArticle == null)
     {
-        <ArticleList ArticleListItems="articleListItems"
-                     OnAddClick="AddArticle"
-                     OnEditClick="EditArticle"
-                     OnDeleteClick="DeleteArticle">
-        </ArticleList>
+        <ItemList Model="articlesModel"
+                  OnAddClick="AddArticle"
+                  OnEditClick="EditArticle"
+                  OnDeleteClick="DeleteArticle">
+        </ItemList>
     }
     else
     {

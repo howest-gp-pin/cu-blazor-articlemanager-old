@@ -1,6 +1,7 @@
 ﻿using ArticleManager.Core.Models;
 using ArticleManager.Web.Services;
 using Microsoft.AspNetCore.Components;
+using Pin.Web.Blazor.Models;
 using System;
 using System.Threading.Tasks;
 
@@ -8,7 +9,13 @@ namespace ArticleManager.Web.Pages
 {
     public partial class Articles: ComponentBase
     {
-        private ArticleListItem[] articleListItems = new ArticleListItem[0];
+        private ItemListModel articlesModel = new ItemListModel()
+        {
+            ItemName = "Article",
+            Headers = new string[] { "Id", "Title", "Category" },
+            Items = new ArticleListItem[0]
+        };
+
         private ArticleItem currentArticle;
         private string error;
 
@@ -22,21 +29,21 @@ namespace ArticleManager.Web.Pages
 
         public async Task ShowList()
         {
-            articleListItems = await service.GetList();
-            this.currentArticle = null;
+            articlesModel.Items = await service.GetList();
+            currentArticle = null;
         }
 
         public async Task AddArticle()
         {
-            this.currentArticle = await service.GetNew();
+            currentArticle = await service.GetNew();
         }
 
-        public async Task EditArticle(ArticleListItem item)
+        public async Task EditArticle(object item)
         {
-            this.currentArticle = await service.Get(item.Id);
+            currentArticle = await service.Get(((ArticleListItem)item).Id);
         }
 
-        public async Task SaveArticle(ArticleItem item)
+        public async Task SaveArticle(object item)
         {
             try
             {
@@ -56,11 +63,11 @@ namespace ArticleManager.Web.Pages
             }
         }
 
-        public async Task DeleteArticle(ArticleListItem item)
+        public async Task DeleteArticle(object item)
         {
             try
             {
-                await service.Delete(item.Id);
+                await service.Delete(((ArticleListItem)item).Id);
                 await this.ShowList();
             }
             catch (Exception ex)
