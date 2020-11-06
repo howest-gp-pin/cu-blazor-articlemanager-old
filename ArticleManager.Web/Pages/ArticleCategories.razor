@@ -12,11 +12,11 @@
 
     @if (currentCategory == null)
     {
-        <ArticleCategoriesList ArticleCategoryListItems="articleCategoryListItems"
-                               OnAddClick="AddCategory"
-                               OnEditClick="EditCategory"
-                               OnDeleteClick="DeleteCategory">
-        </ArticleCategoriesList>
+        <ItemList Model="categoriesModel"
+                  OnAddClick="AddCategory"
+                  OnEditClick="EditCategory"
+                  OnDeleteClick="DeleteCategory">
+        </ItemList>
     }
     else
     {

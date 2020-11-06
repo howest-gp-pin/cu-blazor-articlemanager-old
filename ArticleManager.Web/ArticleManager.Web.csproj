@@ -9,5 +9,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArticleManager.Core\ArticleManager.Core.csproj" />
+    <ProjectReference Include="..\Pin.Web.Blazor\Pin.Web.Blazor.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 </Project>

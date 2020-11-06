@@ -3,12 +3,19 @@ using ArticleManager.Web.Services;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;
+using Pin.Web.Blazor.Models;
 
 namespace ArticleManager.Web.Pages.Base
 {
     public class ArticleCategoriesBase: ComponentBase
     {
-        protected ArticleCategoryListItem[] articleCategoryListItems = new ArticleCategoryListItem[0];
+        protected ItemListModel categoriesModel = new ItemListModel()
+        {
+            ItemName = "Category",
+            Headers = new string[] { "Id", "Name" },
+            Items = new ArticleCategoryListItem[0]
+        };
+
         protected ArticleCategoryItem currentCategory;
         protected string error;
 
@@ -22,21 +29,21 @@ namespace ArticleManager.Web.Pages.Base
 
         public async Task ShowList()
         {
-            articleCategoryListItems = await service.GetList(); ;
-            this.currentCategory = null;
+            categoriesModel.Items = await service.GetList();
+            currentCategory = null;
         }
 
         public async Task AddCategory()
         {
-            this.currentCategory = await service.GetNew();
+            currentCategory = await service.GetNew();
         }
 
-        public async Task EditCategory(ArticleCategoryListItem item)
+        public async Task EditCategory(object item)
         {
-            this.currentCategory = await service.Get(item.Id);
+            currentCategory = await service.Get(((ArticleCategoryListItem)item).Id);
         }
 
-        public async Task SaveCategory(ArticleCategoryItem item)
+        public async Task SaveCategory()
         {
             try
             {
@@ -56,11 +63,11 @@ namespace ArticleManager.Web.Pages.Base
             }
         }
 
-        public async Task DeleteCategory(ArticleCategoryListItem item)
+        public async Task DeleteCategory(object item)
         {
             try
             {
-                await service.Delete(item.Id);
+                await service.Delete(((ArticleCategoryListItem)item).Id);
                 await this.ShowList();
             }
             catch (Exception ex)
