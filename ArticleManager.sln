@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleManager.Api", "Artic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArticleManager.Core", "ArticleManager.Core\ArticleManager.Core.csproj", "{95F9C80F-79AE-411D-BF7D-3D7F9F43F722}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pin.Web.Blazor", "Pin.Web.Blazor\Pin.Web.Blazor.csproj", "{F93D2F02-2EC6-4C96-9585-BDF56BAC250E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{95F9C80F-79AE-411D-BF7D-3D7F9F43F722}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95F9C80F-79AE-411D-BF7D-3D7F9F43F722}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95F9C80F-79AE-411D-BF7D-3D7F9F43F722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93D2F02-2EC6-4C96-9585-BDF56BAC250E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93D2F02-2EC6-4C96-9585-BDF56BAC250E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93D2F02-2EC6-4C96-9585-BDF56BAC250E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93D2F02-2EC6-4C96-9585-BDF56BAC250E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
