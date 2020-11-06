@@ -1,6 +1,6 @@
 ﻿@inject IJSRuntime JSRuntime
 
-<button class="btn btn-primary" @onclick="OnAddClick">Add Category</button>
+<button class="btn btn-primary" @onclick="OnAddClick">Add @Model.ItemName</button>
 <table class="table mt-3">
     <thead>
         <tr>
@@ -31,11 +31,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Delete Category</h4>
+                <h4 class="modal-title">Delete @Model.ItemName</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                Do you want to delete the category?
+                Do you want to delete the @Model.ItemName?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" @onclick="OnYesClick">Yes</button>
