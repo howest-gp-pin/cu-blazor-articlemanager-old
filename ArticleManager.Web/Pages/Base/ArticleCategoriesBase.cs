@@ -16,7 +16,11 @@ namespace ArticleManager.Web.Pages.Base
             Items = new ArticleCategoryListItem[0]
         };
 
-        protected ArticleCategoryItem currentCategory;
+        protected ItemDetailsModel<ArticleCategoryItem> categoryModel = new ItemDetailsModel<ArticleCategoryItem>()
+        {
+            ItemName = "Category"
+        };
+
         protected string error;
 
         [Inject]
@@ -30,30 +34,30 @@ namespace ArticleManager.Web.Pages.Base
         public async Task ShowList()
         {
             categoriesModel.Items = await service.GetList();
-            currentCategory = null;
+            categoryModel.Item = null;
         }
 
         public async Task AddCategory()
         {
-            currentCategory = await service.GetNew();
+            categoryModel.Item = await service.GetNew();
         }
 
         public async Task EditCategory(object item)
         {
-            currentCategory = await service.Get(((ArticleCategoryListItem)item).Id);
+            categoryModel.Item = await service.Get(((ArticleCategoryListItem)item).Id);
         }
 
         public async Task SaveCategory()
         {
             try
             {
-                if (currentCategory.Id == 0)
+                if (categoryModel.Item.Id == 0)
                 {
-                    await service.Create(currentCategory);
+                    await service.Create(categoryModel.Item);
                 }
                 else
                 {
-                    await service.Update(currentCategory);
+                    await service.Update(categoryModel.Item);
                 }
                 await this.ShowList();
             }

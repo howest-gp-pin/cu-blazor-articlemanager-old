@@ -16,7 +16,11 @@ namespace ArticleManager.Web.Pages
             Items = new ArticleListItem[0]
         };
 
-        private ArticleItem currentArticle;
+        protected ItemDetailsModel<ArticleItem> articleModel = new ItemDetailsModel<ArticleItem>()
+        {
+            ItemName = "Article"
+        };
+
         private string error;
 
         [Inject]
@@ -30,30 +34,30 @@ namespace ArticleManager.Web.Pages
         public async Task ShowList()
         {
             articlesModel.Items = await service.GetList();
-            currentArticle = null;
+            articleModel.Item = null;
         }
 
         public async Task AddArticle()
         {
-            currentArticle = await service.GetNew();
+            articleModel.Item = await service.GetNew();
         }
 
         public async Task EditArticle(object item)
         {
-            currentArticle = await service.Get(((ArticleListItem)item).Id);
+            articleModel.Item = await service.Get(((ArticleListItem)item).Id);
         }
 
         public async Task SaveArticle(object item)
         {
             try
             {
-                if (currentArticle.Id == 0)
+                if (articleModel.Item.Id == 0)
                 {
-                    await service.Create(currentArticle);
+                    await service.Create(articleModel.Item);
                 }
                 else
                 {
-                    await service.Update(currentArticle);
+                    await service.Update(articleModel.Item);
                 }
                 await this.ShowList();
             }
