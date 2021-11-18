@@ -2,6 +2,7 @@
 using ArticleManager.Web.Services;
 using Microsoft.AspNetCore.Components;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ArticleManager.Web.Pages
@@ -67,6 +68,11 @@ namespace ArticleManager.Web.Pages
             {
                 this.error = ex.Message;
             }
+        }
+
+        public async Task ShowCategoryMessage(int categoryId)
+        {
+            Debug.Print($"Category updated to id: {categoryId}");
         }
     }
 }

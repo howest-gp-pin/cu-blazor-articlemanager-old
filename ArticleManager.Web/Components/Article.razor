@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label for="category">Category: </label>
-        <InputSelect id="category" @bind-Value="Item.CategoryId" class="form-control">
+        <InputSelect id="category" @bind-Value="Item.CategoryId" @oninput="OnCategoryChange" class="form-control">
             @foreach (var category in Item.Categories)
             {
                 <option value="@category.Value">@category.Label</option>
@@ -36,4 +36,15 @@
     public EventCallback<ArticleItem> OnSaveClick { get; set; }
     [Parameter]
     public EventCallback OnCancelClick { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnCategorySelection { get; set; }
+
+    protected async Task OnCategoryChange(ChangeEventArgs e)
+    {
+        //https://www.pragimtech.com/blog/blazor/blazor-eventcallback/
+        //https://stackoverflow.com/questions/61756167/onchange-event-not-firing-blazor-inputselect/61763542
+        var categoryId = Convert.ToInt32(e.Value);
+        await OnCategorySelection.InvokeAsync(categoryId);
+    }
 }
